@@ -1,4 +1,5 @@
 syntax = "proto3";
+package first;
 
 message TimeRequest{
  string id=1;

@@ -10,10 +10,10 @@
 
 int main(int argc,char** args)
 {
- auto client=Clock::NewStub(grpc::CreateChannel("localhost:60000",
+ auto client=first::Clock::NewStub(grpc::CreateChannel("localhost:60000",
                             grpc::InsecureChannelCredentials()));
- TimeRequest   req;
- TimeResponse  resp;
+ first::TimeRequest   req;
+ first::TimeResponse  resp;
  req.set_id("1234");
  grpc::ClientContext context;
  auto status=client->getTime(&context,req,&resp);

@@ -7,22 +7,24 @@
 #include <memory>
 #include <grpcpp/server_builder.h>
 #include <grpcpp/server.h>
-
-class Service final:public Clock::Service
+namespace first
 {
- grpc::Status getTime(grpc::ServerContext* context,
-                      const TimeRequest* req, TimeResponse* resp)
+ class Service final:public Clock::Service
  {
-  resp->set_time(100);
-  return grpc::Status::OK;
- }
+  grpc::Status getTime(grpc::ServerContext* context,
+                       const TimeRequest* req, TimeResponse* resp)
+  {
+   resp->set_time(100);
+   return grpc::Status::OK;
+  }
   
-};
+ };
+}
 
 std::string addr="0.0.0.0:60000";
 grpc::ServerBuilder builder;
 
-Service service;
+first::Service service;
 int main(int argc,char** args)
 {
  builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
