@@ -10,15 +10,15 @@
 
 int main(int argc,char** args)
 {
- auto client=first::Clock::NewStub(grpc::CreateChannel("localhost:60000",
-                            grpc::InsecureChannelCredentials()));
- first::TimeRequest   req;
- first::TimeResponse  resp;
+ auto client=first::Counter::NewStub(grpc::CreateChannel("localhost:60000",
+                                     grpc::InsecureChannelCredentials()));
+ first::CountRequest   req;
+ first::CountResponse  resp;
  req.set_id("1234");
  grpc::ClientContext context;
- auto status=client->getTime(&context,req,&resp);
+ auto status=client->getCount(&context,req,&resp);
  std::cout<<"status="<<status.ok()<<"\n"
             "'"<<status.error_message()<<"'\n"
-	  <<resp.time()<<"\n";
+	  <<resp.count()<<"\n";
  return 0;
 }

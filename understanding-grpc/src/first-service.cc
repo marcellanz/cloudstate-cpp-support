@@ -1,5 +1,5 @@
 //------------------------
-//first-server.cc
+//first-service.cc
 //(c) H.Buchmann 2020
 //------------------------
 #include "first.grpc.pb.h"
@@ -9,12 +9,12 @@
 #include <grpcpp/server.h>
 namespace first
 {
- class Service final:public Clock::Service
+ class Service final:public Counter::Service
  {
-  grpc::Status getTime(grpc::ServerContext* context,
-                       const TimeRequest* req, TimeResponse* resp)
+  grpc::Status getCount(grpc::ServerContext* context,
+                       const CountRequest* req, CountResponse* resp)
   {
-   resp->set_time(100);
+   resp->set_count(100);
    return grpc::Status::OK;
   }
   

@@ -1,17 +1,17 @@
 syntax = "proto3";
 package first;
 
-message TimeRequest{
+message CountRequest{
  string id=1;
 }
 
-message TimeResponse {
- int32 time=1;
+message CountResponse {
+ int32 count=1;
 }
 
 
-service Clock {
- rpc getTime(TimeRequest) returns (TimeResponse){}
+service Counter {
+ rpc getCount(CountRequest) returns (CountResponse){}
 }
 
 
