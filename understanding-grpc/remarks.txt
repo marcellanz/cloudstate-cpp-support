@@ -1,0 +1,12 @@
+Remarks
+-------
+- a lot of code:
+  g++ -E -I. ../src/first.cc  | wc -l
+  122130 lines
+  
+  ls -lh first 
+  200K
+
+  dynamically linked
+ 
+  no static libraries available
