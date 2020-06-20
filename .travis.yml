@@ -1,0 +1,25 @@
+language: cpp
+sudo: required
+dist: bionic
+compiler:
+  - gcc
+os:
+  - linux
+before_install:
+  - echo $LANG
+  - echo $LC_ALL
+  - sudo apt-get update
+  - sudo apt-get -y install apt-transport-https ca-certificates gnupg software-properties-common wget gpg
+  # https://apt.kitware.com
+  - wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
+  - sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+  - sudo apt-get update
+  - sudo apt-get -y install cmake
+  - sudo apt-get -y install protobuf-compiler protobuf-compiler-grpc
+  - g++ --version
+  - which cmake
+  - cmake --version
+  - /usr/bin/cmake --version
+  - protoc --version
+script:
+  - cd src && /usr/bin/cmake ../src && make
