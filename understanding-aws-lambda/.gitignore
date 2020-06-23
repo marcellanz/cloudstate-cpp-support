@@ -1,3 +1,4 @@
-aws
-lib
+aws*
+java/lib
+layer
 work
